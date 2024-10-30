@@ -10,8 +10,8 @@
 }
 
 .cabecalho {
-    position: fixed;
-    width: 97%;
+  position: fixed;
+  width: 97%;
   flex-wrap: wrap;
   display: flex;
   align-items: center;
@@ -32,12 +32,12 @@
 }
 
 .menu .itens {
-    display: block;
+  display: block;
   border-radius: 5px;
   text-decoration: none;
   margin-left: 1.5rem;
   padding: 0.5rem;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .menu .itens:hover {
@@ -47,8 +47,7 @@
 }
 
 .descricao {
-    display: flex;
-
+  display: flex;
   width: 100%;
   height: 100vh;
 }
