@@ -7,11 +7,10 @@
 .body {
   background-color: #151515;
   color: #ffd700;
+
 }
 
 .cabecalho {
-  position: fixed;
-  width: 97%;
   flex-wrap: wrap;
   display: flex;
   align-items: center;
@@ -46,7 +45,17 @@
   transition-duration: 0.5s;
 }
 
-.descricao {
+.img{
+  height: 400px;
+  width: 300px;
+}
+
+.corpo{
+  height: 100%;
+  width: 100%;
+}
+
+.inicial {
   display: flex;
   width: 100%;
   height: 100vh;
