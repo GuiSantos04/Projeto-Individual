@@ -12,6 +12,8 @@
 body {
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
+    background-image: url('../Imagens/escamas2.jpg');
+    background-size: cover;
 
 }
 
@@ -43,14 +45,15 @@ body {
 .img-painel{
     display: block;
     background-image: url('../Imagens/kobe4.jpg');
-    filter: brightness(50%);
+    filter: brightness(70%);
     background-size: cover;
     width: 50%;
     height: 100%;
 }
 
 .card{
-    background-color: rgb(34, 33, 6);
+    background: transparent;
+    backdrop-filter: blur(10px); 
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -172,6 +175,7 @@ footer{
     margin-top: auto;
 }
 .texto-ipt{
+    font-size: 1.3rem;
     font-weight: bold;
     text-align: left;
     color:	#552583;
