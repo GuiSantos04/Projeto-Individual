@@ -5,7 +5,7 @@
     padding: 0;
 }
 body {
-    background-color:rgba(0, 0, 0);
+    background-color:rgb(0, 0, 0);
     background-size: cover;
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
@@ -21,10 +21,6 @@ body {
     padding: 10px;
 }
 
-header{
-    background-color: rgba(0, 0, 0, 0.8);
-    
-}
 
 .container-cadastro{
     display: flex;
@@ -53,7 +49,7 @@ header{
 }
 
 .card{
-    background-color: rgb(48, 50, 52);
+    background-color: rgb(34, 33, 6);
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -79,7 +75,8 @@ header{
 
 .formulario{
     display: flex;
-    height: 25%;
+    align-items: center;
+    height: 30%;
     flex-direction: column;
     width: 80%;
     justify-content: space-between;
@@ -103,10 +100,13 @@ header{
     margin-bottom: 0.8rem;
     height: 25px;
     background-color: transparent;
-    color: #000;
-    font-size: 15px;
+    color: #ffffff;
+    font-size: 1.2rem;
     padding: 2px;
-    width: 100%;
+    width: 15rem;
+}
+p{
+    font-size: 0.9rem;
 }
 
 .campo{
@@ -117,17 +117,17 @@ header{
 
 .button{
     cursor: pointer;
-    border: 1px solid white;
-    border-radius: 2px;
+    border: 2px solid #ffd700;
+    border-radius: 15px;
     font-size: 18px;
-    color: rgb(255, 255, 255);
+    color: rgb(255, 215, 0);
     background-color: transparent;
     padding: 0.6rem 2rem;
     align-self: center;
     margin-top: 1rem;
     font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     transition: all 0.3s ease;
     text-align: center;
     align-items: center;
@@ -137,10 +137,14 @@ header{
 }
 
 .button:hover{
-    background-color: white;
-    color: #000;
+    background-color: rgb(255, 215, 0);
+    color: #151515;
+    transition-duration: 0.5s;
 }
 
+a{
+    text-decoration: none;
+}
 
 span {
     text-align: center;
@@ -166,6 +170,9 @@ footer{
     margin-top: auto;
 }
 .texto-ipt{
+    font-weight: bold;
+    text-align: left;
+    color:	#552583;
     padding: 0.8rem;
 }
 
