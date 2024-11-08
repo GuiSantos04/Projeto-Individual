@@ -11,36 +11,37 @@
 </head>
 
 <body id="estrutura_login">
-  <header>
-    <a href="index.html"><img src="./img/logo-png.png" class="logo" /></a>
-  </header>
+
   <div class="container-login">
+
+    <div class="img-painel">
+      <!-- <div>
+        <span>Logo</span>
+      </div> -->
+    </div>
+
     <div class="card login">
-      <h1>Entrar</h1>
+      <h1 class="titulo-login">Login</h1>
       <div class="formulario">
         <div class="campo">
-
-          <span>Usuário:</span>
-          <div class="input-container"><i class="fas fa-user"></i>
-
-            <input type="text" id="ipt_login" placeholder="Digite seu usuário" />
+          <span class="texto-ipt">Usuário:</span>
+          <div class="icon"><i class="fas fa-user"></i>
+            <input class="ipt-login" type="text" id="ipt_login"/>
           </div>
-        </div>
 
-        <div class="campo">
-          <span>Senha:</span>
-          <div class="input-container"><i class="fas fa-lock"></i>
-            <input type="password" class="senha" id="ipt_senha_login" placeholder="Digite sua senha" />
+          <span class="texto-ipt">Senha:</span>
+          <div class="icon"><i class="fas fa-lock"></i>
+            <input class="ipt-login" type="password" class="senha" id="ipt_senha_login"/>
           </div>
         </div>
       </div>
-      <a class="button" onclick="logar()">Entrar</a>
-      <a class="button" href="cadastro.html">Não tem cadastro?</a>
+      <button class="button" onclick="logar()">Entrar</button>
+      <a class="link-cadastrar" href="cadastro.html">Não tem cadastro?</a>
     </div>
   </div>
 
   <footer>
-    <span> &copy; 2024 DataTech Security </span>
+    <span class="spn-footer"> &copy; 2024 DataTech Security </span>
   </footer>
 </body>
 
