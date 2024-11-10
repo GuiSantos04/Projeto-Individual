@@ -1,10 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300&display=swap');
+
+
+
 * {
   margin: 0;
   padding: 0;
   font-size: 1.2rem;
 }
 
+.logo{
+  height: 2.5rem;
+  width: 3rem;
+}
+
 .body {
+  font-family: Inter, sans-serif;
   background: linear-gradient(250deg, rgb(34, 33, 6), rgb(0, 0, 0));
   color: rgb(255, 215, 0);
 }
