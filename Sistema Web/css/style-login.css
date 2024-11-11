@@ -51,7 +51,7 @@ body {
 }
 .img-painel{
     display: flex;
-    background-image: url('../Imagens/kobe4.jpg');
+    background-image: url('../img/kobe4.jpg');
     filter: brightness(70%);
     background-size: cover;
     width: 50%;
@@ -174,19 +174,20 @@ span {
     padding: 20px;
 }
 
-footer{
-    padding: 0.4rem 0 ;
-	background-color:rgb(255, 215, 0);
-	width: 100%;
-	text-align: center;
-    margin-top: auto;
-}
 .texto-ipt{
     font-size: 1.3rem;
     font-weight: bold;
     text-align: left;
     color:	rgb(255, 215, 0);
     padding: 0.8rem;
+}
+
+footer{
+    padding: 0.4rem 0 ;
+	background-color:rgb(255, 215, 0);
+	width: 100%;
+	text-align: center;
+    margin-top: auto;
 }
 
 footer .spn-footer{
