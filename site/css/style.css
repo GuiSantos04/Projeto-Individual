@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300&display=swap');
 
 
 
@@ -14,12 +14,13 @@
 }
 
 .body {
-  font-family: Inter, sans-serif;
-  background: linear-gradient(250deg, rgb(34, 33, 6), rgb(0, 0, 0));
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(to right, rgba(111, 14, 141, 0.9), rgba(0, 0, 0, 0.9));
   color: rgb(255, 215, 0);
 }
 
 .cabecalho {
+  /* background-color: rgb(85, 37, 131, 0.5); */
   flex-wrap: wrap;
   display: flex;
   align-items: center;
@@ -79,12 +80,10 @@
 }
 
 .corpo-conteudo .sec-inicial {
-  background: transparent;
   display: flex;
   border-bottom: 1px solid rgb(255, 215, 0);
   width: 100%;
   height: 70vh;
-  margin-bottom: 4rem;
   padding: 2rem 0;
 }
 .introducion, .img-position{
@@ -104,5 +103,18 @@
 
 .introducion .texto-introdution{
   font-size: 1rem;
-  color: #fff;
+  color: #ffffff;
+}
+
+
+/* SOBRE O PROJETO SECTION 2 */
+
+.corpo-conteudo .sec-sobre {
+  /* background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(255, 215, 0, 0.9)); */
+  /* background-color: rgba(111, 14, 141, 0.9); */
+  display: flex;
+  border-bottom: 1px solid rgb(255, 215, 0);
+  width: 100%;
+  height: 70vh;
+  padding: 2rem 0;
 }
