@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>cadastro</title>
-  <script src="../public/js/script.js"></script>
+  <!-- <script src="../public/js/script.js"></script> -->
+  <script src="./js/sessao.js"></script>
   <link rel="stylesheet" href="./css/style-cadastro.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -13,10 +14,13 @@
 <body id="estrutura_login">
 
   <div class="container-login">
+    <div class="cardErro" id="cardErro">
+      <span id="mensagem_erro"></span>
+    </div>
 
     <div class="card login">
       <h1 class="titulo-cadastro">Cadastro</h1>
-      <div class="formulario">
+      <div class="formulario" id="formCadastro">
         <div class="campo">
           <span class="texto-cadastro">Nome</span>
           <input class="ipt-cadastro" type="text" id="ipt_nome" />
@@ -25,9 +29,11 @@
           <span class="texto-cadastro">Senha</span>
           <input class="ipt-cadastro" type="text" id="ipt_senha" />
           <span class="texto-cadastro">Confirmar senha</span>
-          <input class="ipt-cadastro" type="password" class="senha" id="ipt_confirmsenha" />
-          <button class="button" onclick="cadastrar()">Entrar</button>
+          <input class="ipt-cadastro" type="password" class="senha" id="ipt_confirmSenha" />
+          <button class="button" onclick="cadastrar()">cadastrar</button>
         </div>
+        
+        
       </div>
       
     </div>
@@ -40,3 +46,77 @@
 </body>
 
 </html>
+
+<script>
+    function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = ipt_nome.value;
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
+    var confirmacaoSenhaVar = ipt_confirmSenha.value;
+
+    // var codigoVar = codigo_input.value;
+    // var idEmpresaVincular
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" 
+    ) {
+      formCadastro.style.display = "block";
+      alert('Mensagem de erro para todos os campos em branco')
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+  function sumirMensagem(){
+    cardErro.style.display = 'nome';
+  }
+</script>
