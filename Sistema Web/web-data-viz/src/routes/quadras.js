@@ -3,10 +3,6 @@ var router = express.Router();
 
 var quadrasController = require("../controllers/quadrasController");
 
-router.get("/:empresaId", function (req, res) {
-  quadrasController.buscarAquariosPorEmpresa(req, res);
-});
-
 router.post("/cadastrar", function (req, res) {
   quadrasController.cadastrar(req, res);
 })

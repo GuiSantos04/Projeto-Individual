@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cadastro</title>
+    <!-- <script src="../public/js/script.js"></script> -->
+    <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="./css/style-formulario.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body id="estrutura_cadastro">
+
+    <section class="sec-msg" id="secMsg">
+        <div class="cardErro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </section>
+
+    <div class="container-cadastro">
+        <div class="card">
+            <div class="formulario" id="formCadastro">
+                <div class="campo">
+
+                    <span class="texto-cadastro">
+                        Qual é a sua idade?
+                    </span>
+                    <input class="ipt-cadastro" type="text" id="ipt_idade" />
+
+                    <span class="texto-cadastro">
+                        Qual é o seu gênero?
+                    </span>
+                    <select id="slc_genero" name="genero">
+                        <option value="#" selected>selecione uma opção</option>
+                        <option value="1">Feminino</option>
+                        <option value="2">Masculino</option>
+                        <option value="3">Prefiro não dizer</option>
+                    </select>
+
+                    <span class="texto-cadastro">
+                        Há quanto tempo você pratica basquete?
+                    </span>
+                    <select id="slc_tempPratica" name="tempPratica">
+                        <option value="#" selected>selecione uma opção</option>
+                        <option value="1">1 ano</option>
+                        <option value="2">2 anos</option>
+                        <option value="3">3 ou mais anos</option>
+                    </select>
+
+                    <span class="texto-cadastro">
+                        Qual é o seu nível de habilidade no basquete?
+                    </span>
+                    <select id="slc_nivelHabilidade" name="nivelHabilidade">
+                        <option value="#" selected>selecione uma opção</option>
+                        <option value="1">Iniciante</option>
+                        <option value="2">Intermediário</option>
+                        <option value="3">Avançado</option>
+                    </select>
+
+                    <span class="texto-cadastro">
+                        Qual posição você costuma jogar?
+                    </span>
+                    <select id="slc_posicao" name="posicao">
+                        <option value="#" selected>selecione uma opção</option>
+                        <option value="1">Armador</option>
+                        <option value="2">Ala-armador</option>
+                        <option value="3">Ala</option>
+                        <option value="4">Ala-pivô</option>
+                        <option value="5">Pivô</option>
+                    </select>
+
+                    <span class="texto-cadastro">
+                        Você participa de campeonatos ou competições?
+                    </span>
+                    <select id="slc_campeonatos" name="campeonatos">
+                        <option value="#" selected>selecione uma opção</option>
+                        <option value="sim">Sim</option>
+                        <option value="nao">Não</option>
+                    </select>
+
+                    <span class="texto-cadastro">
+                        Quantos jogos você costuma participar por mês?
+                    </span>
+                    <input class="ipt-cadastro" type="password" class="senha" id="ipt_jogosmes" />
+
+                    <button class="button" onclick="cadastrar()">cadastrar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="img-painel"></div> -->
+    </div>
+
+    <footer>
+        <span class="spn-footer"> &copy; 2024 Guilherme Ferreira Santos</span>
+    </footer>
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var idade = ipt_idade.value
+        var jogosMes = ipt_jogosmes.value
+        var posicao = slc_posicao.value
+        var genero = slc_genero.value
+        var tempPratica = slc_genero.value
+        var nivel = slc_nivelHabilidade.value
+        var campeonatos = slc_campeonatos.value
+        var fkUsuario = sessionStorage.ID_USUARIO;
+
+        // var codigoVar = codigo_input.value;
+        // var idEmpresaVincular
+
+        // Verificando se há algum campo em branco
+        // if (
+        //     nomeVar == "" ||
+        //     emailVar == "" ||
+        //     senhaVar == "" ||
+        //     confirmacaoSenhaVar == ""
+        // ) {
+        //     alert('Mensagem de erro para todos os campos em branco')
+        //     finalizarAguardar();
+        //     return false;
+        // } else {
+        //     setInterval(sumirMensagem, 5000);
+        // }
+
+        // Enviando o valor da nova input
+        fetch("/formulario/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                idadeServer : idade,
+                jogosMesServer :  jogosMes,
+                posicaoServer : posicao,
+                generoServer : genero,
+                tempPraticaServer :  tempPratica,
+                nivelServer : nivel,
+                campeonatosServer : campeonatos,
+                fkUsuarioServer : fkUsuario
+
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    secMsg.style.display = "block";
+
+                    mensagem_erro.innerHTML = `Cadastro realizado com sucesso! Redirecionando para tela de Login...`;
+
+                    setTimeout(() => {
+                        window.location = "./dashboard/mural.html";
+                    }, "2000");
+
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+        return false;
+    }
+    function sumirMensagem() {
+        secMsg.style.display = 'nome';
+    }
+</script>
