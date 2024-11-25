@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cadastro</title>
+    <!-- <script src="../public/js/script.js"></script> -->
+    <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="../css/style-cadastro.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body id="estrutura_cadastro">
+
+    <section class="sec-msg" id="secMsg">
+        <div class="cardErro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </section>
+
+
+
+    <div class="container-cadastro">
+        <div class="card">
+            <h1 class="titulo-cadastro">Cadastro</h1>
+            <div class="formulario" id="formCadastro">
+                <div class="campo">
+                    <span class="texto-cadastro">Nome</span>
+                    <input class="ipt-cadastro" type="text" id="ipt_nome" />
+                    <span class="texto-cadastro">Cep</span>
+                    <input class="ipt-cadastro" type="text" id="ipt_cep" />
+                    <span class="texto-cadastro">Cidade</span>
+                    <input class="ipt-cadastro" type="text" id="ipt_cidade" />
+                    <span class="texto-cadastro">Estado</span>
+                    <input class="ipt-cadastro" type="password" class="senha" id="ipt_estado" />
+                    <span class="texto-cadastro">Número</span>
+                    <input class="ipt-cadastro" type="password" class="senha" id="ipt_numero" />
+                    <button class="button" id="btnCadastro" onclick="cadastrar()">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="img-painel"></div>
+    </div>
+
+    <footer>
+        <span class="spn-footer"> &copy; 2024 Guilherme Ferreira Santos</span>
+    </footer>
+</body>
+
+</html>
+
+<script>
+
+    function cadastrar() {
+        // aguardar();
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+
+        var cadastrarFormulario = document.getElementById('formCadastro');
+        var btnCadastro = document.getElementById('btnCadastro');
+        var fkUsuario = sessionStorage.ID_USUARIO;
+
+        var nome = ipt_nome.value;
+        var cep = ipt_cep.value;
+        var cidade = ipt_cidade.value;
+        var estado = ipt_estado.value;
+        var numero = ipt_numero.value;
+        // var codigoVar = codigo_input.value;
+        // var idEmpresaVincular
+
+        // Verificando se há algum campo em branco
+        // if (
+        //     nome == "" ||
+        //     cep == "" ||
+        //     senhaVar == "" ||
+        //     confirmacaoSenhaVar == ""
+        // ) {
+        //     alert('Mensagem de erro para todos os campos em branco')
+        //     finalizarAguardar();
+        //     return false;
+        // } else {
+        //     setInterval(sumirMensagem, 5000);
+        // }
+
+        // Enviando o valor da nova input
+        fetch("/quadras/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer : nome, 
+                cepServer : cep,
+                cidadeServer : cidade,
+                estadoServer : estado,
+                numeroServer : numero,
+                fkUsuarioServer : fkUsuario
+
+
+            }),
+        })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        secMsg.style.display = "block";
+
+                        mensagem_erro.innerHTML = `Cadastro realizado com sucesso! Redirecionando para tela de Login...`;
+
+                        setTimeout(() => {
+                            window.location = "./dashboard.html";
+                        }, "2000");
+
+                        limparFormulario();
+                        finalizarAguardar();
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    finalizarAguardar();
+                });
+
+            return false;
+        }
+    function atualizarFeed() {
+                fetch("/avisos/listar").then(function (resposta) {
+                    if (resposta.ok) {
+                        if (resposta.status == 204) {
+                            var feed = document.getElementById("feed_container");
+                            var mensagem = document.createElement("span");
+                            mensagem.innerHTML = "Nenhum resultado encontrado."
+                            feed.appendChild(mensagem);
+                            throw "Nenhum resultado encontrado!!";
+                        }
+
+                        resposta.json().then(function (resposta) {
+                            console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                            var feed = document.getElementById("feed_container");
+                            feed.innerHTML = "";
+                            for (let i = 0; i < resposta.length; i++) {
+                                var publicacao = resposta[i];
+
+                                // criando e manipulando elementos do HTML via JavaScript
+                                var divPublicacao = document.createElement("div");
+                                var spanID = document.createElement("span");
+                                var spanTitulo = document.createElement("span");
+                                var spanNome = document.createElement("span");
+                                var divDescricao = document.createElement("div");
+                                var divButtons = document.createElement("div");
+                                var btnEditar = document.createElement("button");
+                                var btnDeletar = document.createElement("button");
+
+
+                                spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                                spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
+                                spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
+                                divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                                btnEditar.innerHTML = "Editar";
+                                btnDeletar.innerHTML = "Deletar";
+
+                                divPublicacao.className = "publicacao";
+                                spanTitulo.id = "inputNumero" + publicacao.idAviso;
+                                spanNome.className = "publicacao-nome";
+                                spanTitulo.className = "publicacao-titulo";
+                                divDescricao.className = "publicacao-descricao";
+
+                                divButtons.className = "div-buttons"
+
+                                btnEditar.className = "publicacao-btn-editar"
+                                btnEditar.id = "btnEditar" + publicacao.idAviso;
+                                btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
+
+                                btnDeletar.className = "publicacao-btn-editar"
+                                btnDeletar.id = "btnDeletar" + publicacao.idAviso;
+                                btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
+
+                                divPublicacao.appendChild(spanID);
+                                divPublicacao.appendChild(spanNome);
+                                divPublicacao.appendChild(spanTitulo);
+                                divPublicacao.appendChild(divDescricao);
+                                divPublicacao.appendChild(divButtons);
+                                divButtons.appendChild(btnEditar);
+                                divButtons.appendChild(btnDeletar);
+                                feed.appendChild(divPublicacao);
+                            }
+
+                            finalizarAguardar();
+                        });
+                    } else {
+                        throw ('Houve um erro na API!');
+                    }
+                }).catch(function (resposta) {
+                    console.error(resposta);
+                    finalizarAguardar();
+                });
+            }
+
+    function sumirMensagem() {
+                secMsg.style.display = 'nome';
+            }
+</script>

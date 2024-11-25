@@ -78,7 +78,7 @@
                             </label>
                             <br>
                             <br>
-                            <button>Enviar</button>
+                            <button onclick="publicar()">Enviar</button>
                         </form>
                     </div>
                     <h1>Mural de Avisos</h1>
@@ -99,7 +99,7 @@
 </html>
 
 <script>
-    
+    window.onload = atualizarFeed()
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function limparFormulario() {
@@ -114,7 +114,7 @@
             descricao: form_postagem.descricao.value
         }
 
-        fetch(`/avisos/publicar/${idUsuario}`, {
+        fetch(`/quadras/cadastrar/`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"

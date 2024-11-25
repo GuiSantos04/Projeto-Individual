@@ -11,14 +11,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-<body id="estrutura_login">
+<body id="estrutura_cadastro">
 
-  <div class="container-login">
+  <section class="sec-msg" id="secMsg">
     <div class="cardErro" id="cardErro">
       <span id="mensagem_erro"></span>
     </div>
+  </section>
 
-    <div class="card login">
+
+
+  <div class="container-cadastro">
+    <div class="card">
       <h1 class="titulo-cadastro">Cadastro</h1>
       <div class="formulario" id="formCadastro">
         <div class="campo">
@@ -32,23 +36,21 @@
           <input class="ipt-cadastro" type="password" class="senha" id="ipt_confirmSenha" />
           <button class="button" onclick="cadastrar()">cadastrar</button>
         </div>
-        
-        
       </div>
-      
     </div>
+
     <div class="img-painel"></div>
   </div>
 
   <footer>
-    <span class="spn-footer"> &copy; 2024 DataTech Security </span>
+    <span class="spn-footer"> &copy; 2024 Guilherme Ferreira Santos</span>
   </footer>
 </body>
 
 </html>
 
 <script>
-    function cadastrar() {
+  function cadastrar() {
     // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
@@ -66,9 +68,8 @@
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" 
+      confirmacaoSenhaVar == ""
     ) {
-      formCadastro.style.display = "block";
       alert('Mensagem de erro para todos os campos em branco')
       finalizarAguardar();
       return false;
@@ -94,13 +95,12 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
+          secMsg.style.display = "block";
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+          mensagem_erro.innerHTML = `Cadastro realizado com sucesso! Redirecionando para tela de Login...`;
 
           setTimeout(() => {
-            window.location = "login.html";
+            window.location = "./login.html";
           }, "2000");
 
           limparFormulario();
@@ -116,7 +116,7 @@
 
     return false;
   }
-  function sumirMensagem(){
-    cardErro.style.display = 'nome';
+  function sumirMensagem() {
+    secMsg.style.display = 'nome';
   }
 </script>
