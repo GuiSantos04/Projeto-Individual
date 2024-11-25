@@ -33,8 +33,8 @@
             </div>
 
             <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Aquários</h3>
+                <a href="cadastroQuaddra.html">
+                    <h3>Cadastro Quadras</h3>
                 </a>
             </div>
 
@@ -45,7 +45,7 @@
             </div>
 
             <div class="btn-nav">
-                <h3>Mural de Avisos</h3>
+                <h3>Mural de quadras</h3>
             </div>
 
             <div class="btn-logout" onclick="limparSessao()">
@@ -59,7 +59,7 @@
 
             <div class="avisos">
                 <div class="container">
-                    <h1>Mural de Avisos</h1>
+                    <h1>Mural de Quadras</h1>
                     <div class="div-results">
                         <div id="feed_container" class="feed-container">
                         </div>
@@ -172,45 +172,36 @@
 
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
-                        var spanID = document.createElement("span");
-                        var spanTitulo = document.createElement("span");
                         var spanNome = document.createElement("span");
-                        var divDescricao = document.createElement("div");
-                        var divButtons = document.createElement("div");
-                        var btnEditar = document.createElement("button");
-                        var btnDeletar = document.createElement("button");
+                        var spanCep = document.createElement("span");
+                        var spanCidade = document.createElement("span");
+                        var spanEstado = document.createElement("span");
+                        var spanNumero = document.createElement("span");
+                        // var divDescricao = document.createElement("div");
+                        // var divButtons = document.createElement("div");
+                        // var btnEditar = document.createElement("button");
+                        // var btnDeletar = document.createElement("button");
 
 
-                        spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
-                        spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
-                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
-                        btnEditar.innerHTML = "Editar";
-                        btnDeletar.innerHTML = "Deletar";
+                        spanNome.innerHTML = "Nome: <b>" + publicacao.nome + "</b>";
+                        spanCep.innerHTML = "Título: <b>" + publicacao.cep + "</b>";
+                        spanCidade.innerHTML = "Autor: <b>" + publicacao.cidade + "</b>";
+                        spanEstado.innerHTML = "Autor: <b>" + publicacao.estado + "</b>";
+                        spanNumero.innerHTML = "Autor: <b>" + publicacao.numero + "</b>";
+                        
 
                         divPublicacao.className = "publicacao";
-                        spanTitulo.id = "inputNumero" + publicacao.idAviso;
                         spanNome.className = "publicacao-nome";
-                        spanTitulo.className = "publicacao-titulo";
-                        divDescricao.className = "publicacao-descricao";
-
-                        divButtons.className = "div-buttons"
-
-                        btnEditar.className = "publicacao-btn-editar"
-                        btnEditar.id = "btnEditar" + publicacao.idAviso;
-                        btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
-
-                        btnDeletar.className = "publicacao-btn-editar"
-                        btnDeletar.id = "btnDeletar" + publicacao.idAviso;
-                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
-
-                        divPublicacao.appendChild(spanID);
+                        spanCep.className = "publicacao-nome";
+                        spanCidade.className = "publicacao-nome";
+                        spanEstado.className = "publicacao-nome";
+                        spanNumero.className = "publicacao-nome";
+                        
                         divPublicacao.appendChild(spanNome);
-                        divPublicacao.appendChild(spanTitulo);
-                        divPublicacao.appendChild(divDescricao);
-                        divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnEditar);
-                        divButtons.appendChild(btnDeletar);
+                        divPublicacao.appendChild(spanCep);
+                        divPublicacao.appendChild(spanCidade);
+                        divPublicacao.appendChild(spanEstado);
+                        divPublicacao.appendChild(spanNumero);
                         feed.appendChild(divPublicacao);
                     }
 

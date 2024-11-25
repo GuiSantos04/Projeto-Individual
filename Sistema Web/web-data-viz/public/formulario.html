@@ -34,9 +34,9 @@
                     </span>
                     <select id="slc_genero" name="genero">
                         <option value="#" selected>selecione uma opção</option>
-                        <option value="1">Feminino</option>
-                        <option value="2">Masculino</option>
-                        <option value="3">Prefiro não dizer</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Não">Prefiro não dizer</option>
                     </select>
 
                     <span class="texto-cadastro">
@@ -54,9 +54,9 @@
                     </span>
                     <select id="slc_nivelHabilidade" name="nivelHabilidade">
                         <option value="#" selected>selecione uma opção</option>
-                        <option value="1">Iniciante</option>
-                        <option value="2">Intermediário</option>
-                        <option value="3">Avançado</option>
+                        <option value="Iniciante">Iniciante</option>
+                        <option value="Intermediario">Intermediário</option>
+                        <option value="Avançado">Avançado</option>
                     </select>
 
                     <span class="texto-cadastro">
@@ -64,11 +64,11 @@
                     </span>
                     <select id="slc_posicao" name="posicao">
                         <option value="#" selected>selecione uma opção</option>
-                        <option value="1">Armador</option>
-                        <option value="2">Ala-armador</option>
-                        <option value="3">Ala</option>
-                        <option value="4">Ala-pivô</option>
-                        <option value="5">Pivô</option>
+                        <option value="Armador">Armador</option>
+                        <option value="Ala-armador">Ala-armador</option>
+                        <option value="Ala">Ala</option>
+                        <option value="Ala-pivô">Ala-pivô</option>
+                        <option value="Pivô">Pivô</option>
                     </select>
 
                     <span class="texto-cadastro">
@@ -110,7 +110,7 @@
         var jogosMes = ipt_jogosmes.value
         var posicao = slc_posicao.value
         var genero = slc_genero.value
-        var tempPratica = slc_genero.value
+        var tempPratica = slc_tempPratica.value
         var nivel = slc_nivelHabilidade.value
         var campeonatos = slc_campeonatos.value
         var fkUsuario = sessionStorage.ID_USUARIO;
