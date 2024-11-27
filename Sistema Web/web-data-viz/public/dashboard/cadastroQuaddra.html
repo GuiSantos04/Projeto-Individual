@@ -8,8 +8,6 @@
     <!-- <script src="../public/js/script.js"></script> -->
     <script src="./js/sessao.js"></script>
     <link rel="stylesheet" href="../css/style-cadastro-quadras.css" />
-    <link rel="stylesheet" href="../css/dashboards.css">
-    <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -20,31 +18,38 @@
 
         <div class="header-left">
 
-            <h1>AquaTech</h1>
+            <h1 class="titulo-cadastro">Bask Finger</h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="btn-nav-white">
+            <div class="button-selecionado">
                 <a href="cadastroQuaddra.html">
                     <h3>Cadastro Quadras</h3>
                 </a>
             </div>
 
-            <div class="btn-nav-white">
+            <div class="button">
                 <a href="./dashboard.html">
                     <h3>Gráficos</h3>
                 </a>
             </div>
 
-            <div class="btn-nav-white">
+            <div class="button">
                 <a href="./mural.html">
                     <h3>Mural de Quadras</h3>
                 </a>
             </div>
 
-            <div class="btn-logout" onclick="limparSessao()">
+            <div class="button">
+                <a href="../formulario.html">
+                    <h3>Formulario</h3>
+                </a>
+            </div>
+
+
+            <div class="button" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
 
@@ -72,10 +77,21 @@
                         <span class="texto-cadastro">Cidade</span>
                         <input class="ipt-cadastro" type="text" id="ipt_cidade" />
                         <span class="texto-cadastro">Estado</span>
-                        <input class="ipt-cadastro" type="password" class="senha" id="ipt_estado" />
+                        <input class="ipt-cadastro" type="text" class="senha" id="ipt_estado" />
                         <span class="texto-cadastro">Número</span>
-                        <input class="ipt-cadastro" type="password" class="senha" id="ipt_numero" />
-                        <button class="button" id="btnCadastro" onclick="cadastrar()">Cadastrar</button>
+                        <input class="ipt-cadastro" type="text" class="senha" id="ipt_numero" />
+                        <span class="texto-cadastro">
+                            Há quanto tempo você pratica basquete?
+                        </span>
+                        <select class="slc" id="slc_regiao" name="regiao">
+                            <option class="opt" value="#" selected>selecione uma opção</option>
+                            <option class="opt" value="Sul">Sul</option>
+                            <option class="opt" value="Norte">Norte</option>
+                            <option class="opt" value="Nordeste">Nordeste</option>
+                            <option class="opt" value="Sudeste">Sudeste</option>
+                            <option class="opt" value="Centro-Oeste">Centro-Oeste</option>
+                        </select>
+                        <button class="button-cadastro" id="btnCadastro" onclick="cadastrar()">Cadastrar</button>
                     </div>
                 </div>
 
@@ -86,15 +102,13 @@
 
 
 
-    <footer>
-        <span class="spn-footer"> &copy; 2024 Guilherme Ferreira Santos</span>
-    </footer>
 </body>
 
 </html>
 
 <script>
-
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    
     function cadastrar() {
         // aguardar();
         //Recupere o valor da nova input pelo nome do id
@@ -109,24 +123,8 @@
         var cidade = ipt_cidade.value;
         var estado = ipt_estado.value;
         var numero = ipt_numero.value;
-        // var codigoVar = codigo_input.value;
-        // var idEmpresaVincular
-
-        // Verificando se há algum campo em branco
-        // if (
-        //     nome == "" ||
-        //     cep == "" ||
-        //     senhaVar == "" ||
-        //     confirmacaoSenhaVar == ""
-        // ) {
-        //     alert('Mensagem de erro para todos os campos em branco')
-        //     finalizarAguardar();
-        //     return false;
-        // } else {
-        //     setInterval(sumirMensagem, 5000);
-        // }
-
-        // Enviando o valor da nova input
+        var regiao = slc_regiao.value
+        
         fetch("/quadras/cadastrar", {
             method: "POST",
             headers: {
@@ -140,6 +138,7 @@
                 cidadeServer: cidade,
                 estadoServer: estado,
                 numeroServer: numero,
+                regiaoServer: regiao,
                 fkUsuarioServer: fkUsuario
 
 

@@ -56,7 +56,7 @@
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            alert('Mensagem de erro para todos os campos em branco');
             finalizarAguardar();
             return false;
         }
@@ -91,7 +91,7 @@
                     
 
                     setTimeout(function () {
-                        window.location = "./formulario.html";
+                        window.location = "../dashboard/mural.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

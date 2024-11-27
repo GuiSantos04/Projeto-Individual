@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AquaTech | Avisos</title>
-
-    <link rel="stylesheet" href="./../css/dashboards.css">
+    
     <link rel="stylesheet" href="./../css/estilo.css" />
+
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
@@ -19,36 +19,43 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
+<body onload="validarSessao(), atualizarFeed()">
 
     <div class="janela">
 
 
         <div class="header-left">
 
-            <h1>AquaTech</h1>
+            <h1 class="titulo-cadastro">Bask Finger</h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="btn-nav-white">
+            <div class="button">
                 <a href="cadastroQuaddra.html">
                     <h3>Cadastro Quadras</h3>
                 </a>
             </div>
 
-            <div class="btn-nav-white">
+            <div class="button">
                 <a href="./dashboard.html">
                     <h3>Gráficos</h3>
                 </a>
             </div>
 
-            <div class="btn-nav">
+            <div class="button-selecionado">
                 <h3>Mural de quadras</h3>
             </div>
 
-            <div class="btn-logout" onclick="limparSessao()">
+            <div class="button">
+                <a href="../formulario.html">
+                    <h3>Formulario</h3>
+                </a>
+            </div>
+
+
+            <div class="button" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
 
@@ -57,11 +64,11 @@
         <div class="dash-right">
 
 
-            <div class="avisos">
+            <div class="quadras">
                 <div class="container">
-                    <h1>Mural de Quadras</h1>
+                    <h1 class="titulo-cadastro">Mural de Quadras</h1>
                     <div class="div-results">
-                        <div id="feed_container" class="feed-container">
+                        <div id="feed_container" class="feedContainer">
                         </div>
                     </div>
                 </div>
@@ -80,79 +87,8 @@
     window.onload = atualizarFeed()
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    function limparFormulario() {
-        document.getElementById("form_postagem").reset();
-    }
-
-    function publicar() {
-        var idUsuario = sessionStorage.ID_USUARIO;
-
-        var corpo = {
-            titulo: form_postagem.titulo.value,
-            descricao: form_postagem.descricao.value
-        }
-
-        fetch(`/quadras/cadastrar/`, {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(corpo)
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
-                window.location = "/dashboard/mural.html";
-                limparFormulario();
-                finalizarAguardar();
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
-        });
-
-        return false;
-
-    }
-
-    function editar(idAviso) {
-        sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
-        console.log("cliquei em editar - " + idAviso);
-        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
-        window.location = "/dashboard/edicao-aviso.html"
-
-    }
-
-    function deletar(idAviso) {
-        console.log("Criar função de apagar post escolhido - ID" + idAviso);
-        fetch(`/avisos/deletar/${idAviso}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
-
-            if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
-
     function atualizarFeed() {
-        fetch("/avisos/listar").then(function (resposta) {
+        fetch("/mural/listar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
@@ -177,17 +113,19 @@
                         var spanCidade = document.createElement("span");
                         var spanEstado = document.createElement("span");
                         var spanNumero = document.createElement("span");
+                        var spanRegiao = document.createElement("span");
                         // var divDescricao = document.createElement("div");
                         // var divButtons = document.createElement("div");
                         // var btnEditar = document.createElement("button");
                         // var btnDeletar = document.createElement("button");
 
 
-                        spanNome.innerHTML = "Nome: <b>" + publicacao.nome + "</b>";
-                        spanCep.innerHTML = "Título: <b>" + publicacao.cep + "</b>";
-                        spanCidade.innerHTML = "Autor: <b>" + publicacao.cidade + "</b>";
-                        spanEstado.innerHTML = "Autor: <b>" + publicacao.estado + "</b>";
-                        spanNumero.innerHTML = "Autor: <b>" + publicacao.numero + "</b>";
+                        spanNome.innerHTML = "Nome da Quadra: <b>" + publicacao.nome + "</b>";
+                        spanCep.innerHTML = "Cep: <b>" + publicacao.cep + "</b>";
+                        spanCidade.innerHTML = "Cidade: <b>" + publicacao.cidade + "</b>";
+                        spanEstado.innerHTML = "Estado: <b>" + publicacao.estado + "</b>";
+                        spanNumero.innerHTML = "Número: <b>" + publicacao.numero + "</b>";
+                        spanRegiao.innerHTML = "Regiao: <b>" + publicacao.regiao + "</b>";
                         
 
                         divPublicacao.className = "publicacao";
@@ -196,12 +134,14 @@
                         spanCidade.className = "publicacao-nome";
                         spanEstado.className = "publicacao-nome";
                         spanNumero.className = "publicacao-nome";
+                        spanRegiao.className = "publicacao-nome";
                         
                         divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(spanCep);
                         divPublicacao.appendChild(spanCidade);
                         divPublicacao.appendChild(spanEstado);
                         divPublicacao.appendChild(spanNumero);
+                        divPublicacao.appendChild(spanRegiao);
                         feed.appendChild(divPublicacao);
                     }
 

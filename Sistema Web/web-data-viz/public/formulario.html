@@ -12,95 +12,137 @@
 </head>
 
 <body id="estrutura_cadastro">
+    <div class="janela">
 
-    <section class="sec-msg" id="secMsg">
-        <div class="cardErro" id="cardErro">
-            <span id="mensagem_erro"></span>
+
+        <div class="header-left">
+
+            <h1 class="titulo-cadastro">Bask Finger</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="button">
+                <a href="./dashboard/cadastroQuaddra.html">
+                    <h3>Cadastro Quadras</h3>
+                </a>
+            </div>
+
+            <div class="button">
+                <a href="./dashboard/dashboard.html">
+                    <h3>Gráficos</h3>
+                </a>
+            </div>
+
+            <div class="button">
+                <a href="./dashboard/mural.html">
+                    <h3>Mural de Quadras</h3>
+                </a>
+            </div>
+
+            <div class="button-selecionado">
+              
+                <h3>Formulario</h3>
+              
+            </div>
+
+
+            <div class="button" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+
         </div>
-    </section>
 
-    <div class="container-cadastro">
-        <div class="card">
-            <div class="formulario" id="formCadastro">
-                <div class="campo">
+        <div class="dash-right">
 
-                    <span class="texto-cadastro">
-                        Qual é a sua idade?
-                    </span>
-                    <input class="ipt-cadastro" type="text" id="ipt_idade" />
-
-                    <span class="texto-cadastro">
-                        Qual é o seu gênero?
-                    </span>
-                    <select id="slc_genero" name="genero">
-                        <option value="#" selected>selecione uma opção</option>
-                        <option value="Feminino">Feminino</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Não">Prefiro não dizer</option>
-                    </select>
-
-                    <span class="texto-cadastro">
-                        Há quanto tempo você pratica basquete?
-                    </span>
-                    <select id="slc_tempPratica" name="tempPratica">
-                        <option value="#" selected>selecione uma opção</option>
-                        <option value="1">1 ano</option>
-                        <option value="2">2 anos</option>
-                        <option value="3">3 ou mais anos</option>
-                    </select>
-
-                    <span class="texto-cadastro">
-                        Qual é o seu nível de habilidade no basquete?
-                    </span>
-                    <select id="slc_nivelHabilidade" name="nivelHabilidade">
-                        <option value="#" selected>selecione uma opção</option>
-                        <option value="Iniciante">Iniciante</option>
-                        <option value="Intermediario">Intermediário</option>
-                        <option value="Avançado">Avançado</option>
-                    </select>
-
-                    <span class="texto-cadastro">
-                        Qual posição você costuma jogar?
-                    </span>
-                    <select id="slc_posicao" name="posicao">
-                        <option value="#" selected>selecione uma opção</option>
-                        <option value="Armador">Armador</option>
-                        <option value="Ala-armador">Ala-armador</option>
-                        <option value="Ala">Ala</option>
-                        <option value="Ala-pivô">Ala-pivô</option>
-                        <option value="Pivô">Pivô</option>
-                    </select>
-
-                    <span class="texto-cadastro">
-                        Você participa de campeonatos ou competições?
-                    </span>
-                    <select id="slc_campeonatos" name="campeonatos">
-                        <option value="#" selected>selecione uma opção</option>
-                        <option value="sim">Sim</option>
-                        <option value="nao">Não</option>
-                    </select>
-
-                    <span class="texto-cadastro">
-                        Quantos jogos você costuma participar por mês?
-                    </span>
-                    <input class="ipt-cadastro" type="password" class="senha" id="ipt_jogosmes" />
-
-                    <button class="button" onclick="cadastrar()">cadastrar</button>
+            <section class="sec-msg" id="secMsg">
+                <div class="cardErro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </section>
+        
+            <div class="container-cadastro">
+                <div class="card">
+                    <div class="formulario" id="formCadastro">
+                        <div class="campo">
+        
+                            <span class="texto-cadastro">
+                                Qual é a sua idade?
+                            </span>
+                            <input class="ipt-cadastro" type="text" id="ipt_idade" />
+        
+                            <span class="texto-cadastro">
+                                Qual é o seu gênero?
+                            </span>
+                            <select class="slc" id="slc_genero" name="genero">
+                                <option class="opt" value="#" selected>selecione uma opção</option>
+                                <option class="opt" value="Feminino">Feminino</option>
+                                <option class="opt" value="Masculino">Masculino</option>
+                                <option class="opt" value="Não">Prefiro não dizer</option>
+                            </select>
+        
+                            <span class="texto-cadastro">
+                                Há quanto tempo você pratica basquete?
+                            </span>
+                            <select class="slc" id="slc_tempPratica" name="tempPratica">
+                                <option class="opt" value="#" selected>selecione uma opção</option>
+                                <option class="opt" value="1">1 ano</option>
+                                <option class="opt" value="2">2 anos</option>
+                                <option class="opt" value="3">3 ou mais anos</option>
+                            </select>
+        
+                            <span class="texto-cadastro">
+                                Qual é o seu nível de habilidade no basquete?
+                            </span>
+                            <select class="slc" id="slc_nivelHabilidade" name="nivelHabilidade">
+                                <option class="opt" value="#" selected>selecione uma opção</option>
+                                <option class="opt" value="Iniciante">Iniciante</option>
+                                <option class="opt" value="Intermediario">Intermediário</option>
+                                <option class="opt" value="Avançado">Avançado</option>
+                            </select>
+        
+                            <span class="texto-cadastro">
+                                Qual posição você costuma jogar?
+                            </span>
+                            <select class="slc" id="slc_posicao" name="posicao">
+                                <option class="opt" value="#" selected>selecione uma opção</option>
+                                <option class="opt" value="Armador">Armador</option>
+                                <option class="opt" value="Ala-armador">Ala-armador</option>
+                                <option class="opt" value="Ala">Ala</option>
+                                <option class="opt" value="Ala-pivô">Ala-pivô</option>
+                                <option class="opt" value="Pivô">Pivô</option>
+                            </select>
+        
+                            <span class="texto-cadastro">
+                                Você participa de campeonatos ou competições?
+                            </span>
+                            <select class="slc" id="slc_campeonatos" name="campeonatos">
+                                <option class="opt" value="#" selected>selecione uma opção</option>
+                                <option class="opt" value="sim">Sim</option>
+                                <option class="opt" value="nao">Não</option>
+                            </select>
+        
+                            <span class="texto-cadastro">
+                                Quantos jogos você costuma participar por mês?
+                            </span>
+                            <input class="ipt-cadastro" type="text" id="ipt_jogosmes" />
+        
+                            <button class="button-cadastro" onclick="cadastrar()">Enviar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
-
-        <!-- <div class="img-painel"></div> -->
     </div>
-
-    <footer>
-        <span class="spn-footer"> &copy; 2024 Guilherme Ferreira Santos</span>
-    </footer>
 </body>
 
 </html>
 
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    
     function cadastrar() {
         // aguardar();
 
