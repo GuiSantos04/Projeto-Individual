@@ -144,10 +144,6 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function cadastrar() {
-        // aguardar();
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
         var idade = ipt_idade.value
         var jogosMes = ipt_jogosmes.value
         var posicao = slc_posicao.value
@@ -157,68 +153,68 @@
         var campeonatos = slc_campeonatos.value
         var fkUsuario = sessionStorage.ID_USUARIO;
 
-        // var codigoVar = codigo_input.value;
-        // var idEmpresaVincular
 
-        // Verificando se há algum campo em branco
-        // if (
-        //     nomeVar == "" ||
-        //     emailVar == "" ||
-        //     senhaVar == "" ||
-        //     confirmacaoSenhaVar == ""
-        // ) {
-        //     alert('Mensagem de erro para todos os campos em branco')
-        //     finalizarAguardar();
-        //     return false;
-        // } else {
-        //     setInterval(sumirMensagem, 5000);
-        // }
+        if (
+            idade == '' ||
+            jogosMes == '' ||
+            posicao == '' ||
+            genero == '' ||
+            tempPratica == '' ||
+            nivel == '' ||
+            campeonatos == ''
+        ) {
+            alert('Mensagem de erro para campos em branco')
 
-        // Enviando o valor da nova input
-        fetch("/formulario/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                idadeServer: idade,
-                jogosMesServer: jogosMes,
-                posicaoServer: posicao,
-                generoServer: genero,
-                tempPraticaServer: tempPratica,
-                nivelServer: nivel,
-                campeonatosServer: campeonatos,
-                fkUsuarioServer: fkUsuario
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+            // Enviando o valor da nova input
+            fetch("/formulario/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    idadeServer: idade,
+                    jogosMesServer: jogosMes,
+                    posicaoServer: posicao,
+                    generoServer: genero,
+                    tempPraticaServer: tempPratica,
+                    nivelServer: nivel,
+                    campeonatosServer: campeonatos,
+                    fkUsuarioServer: fkUsuario
 
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    secMsg.style.display = "block";
-
-                    mensagem_erro.innerHTML = `Cadastro realizado com sucesso! Redirecionando para tela de Login...`;
-
-                    setTimeout(() => {
-                        window.location = "./dashboard/mural.html";
-                    }, "2000");
-
-                    limparFormulario();
-                    finalizarAguardar();
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
+                }),
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
-            });
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-        return false;
+                    if (resposta.ok) {
+                        secMsg.style.display = "block";
+
+                        mensagem_erro.innerHTML = `Cadastro realizado com sucesso! Redirecionando para tela de Login...`;
+
+                        setTimeout(() => {
+                            window.location = "./dashboard/mural.html";
+                        }, "2000");
+
+                        limparFormulario();
+                        finalizarAguardar();
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    finalizarAguardar();
+                });
+
+            return false;
+        }
     }
+    
     function sumirMensagem() {
         secMsg.style.display = 'nome';
     }
