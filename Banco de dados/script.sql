@@ -21,6 +21,7 @@ fkUsuario int,
 constraint fkUsuarioQuadra foreign key(fkUsuario) references usuario(idUsuario)
 );
  
+
 create table formulario(
 idForm int primary key auto_increment,
 idade int,
@@ -33,3 +34,4 @@ jogosMes int,
 fkUsuario int,
 constraint fkUsuarioForm foreign key(fkUsuario) references usuario(idUsuario)
 );
+

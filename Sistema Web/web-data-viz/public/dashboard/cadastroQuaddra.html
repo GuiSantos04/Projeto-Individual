@@ -26,7 +26,7 @@
 
             <div class="button-selecionado">
                 <a href="cadastroQuaddra.html">
-                    <h3>Cadastro Quadras</h3>
+                    <h3>Cadastro de Quadras</h3>
                 </a>
             </div>
 
@@ -49,8 +49,10 @@
             </div>
 
 
-            <div class="button" onclick="limparSessao()">
-                <h3>Sair</h3>
+            <div class="button">
+                <a href="../index.html">
+                    <h3>Sair</h3>
+                </a>
             </div>
 
         </div>
@@ -108,7 +110,7 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    
+
     function cadastrar() {
         // aguardar();
         //Recupere o valor da nova input pelo nome do id
@@ -124,7 +126,7 @@
         var estado = ipt_estado.value;
         var numero = ipt_numero.value;
         var regiao = slc_regiao.value
-        
+
         fetch("/quadras/cadastrar", {
             method: "POST",
             headers: {
