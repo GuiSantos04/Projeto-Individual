@@ -261,6 +261,10 @@ footer .spn-footer {
 }
 
 .dash {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   width: 80%;
   position: relative;
   top: 0;
@@ -271,6 +275,7 @@ footer .spn-footer {
 }
 
 .grafico{
+  padding: 2rem;
   width: 90%;
   height: 80%;
   background: linear-gradient(
@@ -290,8 +295,17 @@ footer .spn-footer {
 }
 
 .quadradinho{
-  background-color: #552583;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  border: 7px solid #552583;
+  padding: 3rem;
+  /* background-color: #552583; */
   width: 10rem;
   height: 8rem;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 215, 0, 1)
+  );
 
 }
