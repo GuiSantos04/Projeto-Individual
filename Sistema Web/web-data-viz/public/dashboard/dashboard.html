@@ -73,8 +73,12 @@
 
         <div class="dash">
             <div class="kpis">
-                <div class="quadradinho" id="media"></div>
-                <div class="quadradinho" id="tempodejogo"></div>
+                <div class="quadradinho" id="media">
+                    <p>Média de jogos por mês:</p>
+                </div>
+                <div class="quadradinho" id="tempodejogo">
+                    <p>Média de jogos por mês:</p>
+                </div>
             </div>
 
             <div class="grafico">
@@ -246,7 +250,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Índice de Resultados Gerais',
+                        text: 'Número de qudras por região do Brasil',
                         color: '#FFFFFF',
                         font: {
                             size: 25,
@@ -313,7 +317,7 @@
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     var feed = document.getElementById("media");
-                    feed.innerHTML = "";
+                    feed.innerHTML += "";
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 
@@ -321,7 +325,7 @@
                         var divPublicacao = document.createElement("div");
                         var spanMedia = document.createElement("span");
 
-                        spanMedia.innerHTML = `Média de jogos por mês: <b>  ${publicacao.media} </b>`;
+                        spanMedia.innerHTML = `${publicacao.media}`;
 
 
 
@@ -330,11 +334,6 @@
                         spanMedia.className = "publicacao-media";
 
                         divPublicacao.appendChild(spanMedia);
-                        // divPublicacao.appendChild(spanCep);
-                        // divPublicacao.appendChild(spanCidade);
-                        // divPublicacao.appendChild(spanEstado);
-                        // divPublicacao.appendChild(spanNumero);
-                        // divPublicacao.appendChild(spanRegiao);
                         feed.appendChild(divPublicacao);
 
                     }
@@ -369,7 +368,7 @@
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     var feed = document.getElementById("tempodejogo");
-                    feed.innerHTML = "";
+                    feed.innerHTML += "";
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 
@@ -377,7 +376,7 @@
                         var divPublicacao = document.createElement("div");
                         var spanMedia = document.createElement("span");
 
-                        spanMedia.innerHTML = `Média de tempo de pratica: <b>  ${publicacao.pratica} anos </b>`;
+                        spanMedia.innerHTML = `${publicacao.pratica}`;
 
 
 
@@ -386,11 +385,6 @@
                         spanMedia.className = "publicacao-media";
 
                         divPublicacao.appendChild(spanMedia);
-                        // divPublicacao.appendChild(spanCep);
-                        // divPublicacao.appendChild(spanCidade);
-                        // divPublicacao.appendChild(spanEstado);
-                        // divPublicacao.appendChild(spanNumero);
-                        // divPublicacao.appendChild(spanRegiao);
                         feed.appendChild(divPublicacao);
 
                     }

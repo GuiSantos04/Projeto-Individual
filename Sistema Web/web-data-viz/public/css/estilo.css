@@ -267,12 +267,9 @@ height: 100%;
   text-align: center;
 }
 
-
-
 .hello {
   color: rgb(255, 255, 255);
 }
-
 
 .publicacao{
   gap: 1rem;
@@ -284,6 +281,7 @@ height: 100%;
   padding: 2rem;
   width: 18rem;
   height: 10rem;
+  border: 4px solid #552583;
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 0.9),

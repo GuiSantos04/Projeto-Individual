@@ -60,7 +60,6 @@ body {
   align-items: center;
   color: white;
   /* margin-bottom: 3rem */
-  ;
 }
 
 .formulario-cadastro {
@@ -97,7 +96,7 @@ body {
   margin: 0;
   margin-bottom: 0.8rem;
   height: 25px;
-  width: 100%;
+  width: 50%;
   background-color: transparent;
   color: #ffffff;
   font-size: 1.3rem;
@@ -115,7 +114,9 @@ p {
   margin-bottom: 20px;
 }
 
-.button, .button-cadastro, .button-selecionado {
+.button,
+.button-cadastro,
+.button-selecionado {
   cursor: pointer;
   color: #ffd700;
   border-bottom: 2px solid #ffd700;
@@ -129,16 +130,16 @@ p {
   text-decoration: none;
 }
 
-.button-selecionado{
+.button-selecionado {
   padding: 1rem;
-  border: 2px solid #ffd700 ;
+  border: 2px solid #ffd700;
   background-color: #552583;
   border-radius: 15px;
 }
 
-.button-cadastro{
+.button-cadastro {
   padding: 1rem;
-  border: 2px solid #ffd700 ;
+  border: 2px solid #ffd700;
   background-color: transparent;
   border-radius: 15px;
 }
@@ -147,8 +148,6 @@ a {
   text-decoration: none;
   color: #ffd700;
 }
-
-
 
 .cadastro_realizado {
   color: rgba(255, 255, 255, 0.8);
@@ -218,7 +217,6 @@ footer .spn-footer {
   color: rgb(255, 215, 0);
 }
 
-
 .header-left {
   position: fixed;
   top: 0;
@@ -238,8 +236,6 @@ footer .spn-footer {
   );
 }
 
-
-
 .dash-right {
   display: flex;
   width: 80%;
@@ -248,15 +244,13 @@ footer .spn-footer {
   top: 0;
   /* left: 25%; */
   height: 100%;
- 
 }
 
-
-.janela{
+.janela {
   display: flex;
 }
 
-.hello{
+.hello {
   color: rgb(255, 255, 255);
 }
 
@@ -270,22 +264,24 @@ footer .spn-footer {
   top: 0;
   left: 20%;
   background-color: #dcdcdc;
-  height: 100vh;
+  /* height: 100vh; */
   overflow: auto;
 }
 
-.grafico{
+.grafico {
   padding: 2rem;
   width: 90%;
   height: 80%;
+  border-radius: 15px;
+  border: 5px solid rgb(255, 215, 0);
   background: linear-gradient(
     to right,
-    rgba(111, 14, 141, 0.9),
-    rgba(0, 0, 0, 1)
+    rgba(111, 14, 141, 0.7),
+    rgba(0, 0, 0, 0.7)
   );
 }
 
-.kpis{
+.kpis {
   padding: 4rem 0;
   display: flex;
   gap: 4rem;
@@ -294,10 +290,17 @@ footer .spn-footer {
   height: 40%;
 }
 
-.quadradinho{
+.quadradinho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: column;
   border-radius: 15px;
   font-size: 1.2rem;
-  border: 7px solid #552583;
+  font-weight: 600;
+  text-align: center;
+  border: 4px solid #552583;
   padding: 3rem;
   /* background-color: #552583; */
   width: 10rem;
@@ -307,5 +310,8 @@ footer .spn-footer {
     rgba(255, 255, 255, 0.9),
     rgba(255, 215, 0, 1)
   );
+}
 
+.publicacao-media {
+  font-size: 2rem;
 }
