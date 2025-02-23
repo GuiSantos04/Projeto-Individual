@@ -263,7 +263,7 @@ footer .spn-footer {
   position: relative;
   top: 0;
   left: 20%;
-  background-color: #dcdcdc;
+  background-color: rgb(220, 220, 220);
   /* height: 100vh; */
   overflow: auto;
 }
