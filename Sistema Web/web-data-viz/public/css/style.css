@@ -289,19 +289,14 @@ footer .spn-footer {
     margin: 0;
     font-size: 5px;
   }
-
-  .cabecalho .logo {
-    height: 3rem;
-    width: 4rem;
-  }
-
+  
   .cabecalho .menu {
     display: flex;
     justify-content: center;
     list-style: none;
     align-items: center;
-    gap: 25px;
-    padding: 20px 20px;
+    gap: 1rem;
+    padding: 10px 10px;
   }
 
   .cabecalho .menu .itens {
